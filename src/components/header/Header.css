@@ -1,0 +1,138 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: color 200ms ease-in-out;
+}
+
+.logo {
+  color: hsl(var(--text-secondary));
+}
+
+.settings {
+  --header-icon-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.font-switcher-wrapper {
+  position: relative;
+}
+
+.switch-ff-btn {
+  background-color: transparent;
+  color: hsl(var(--text-primary));
+  text-transform: capitalize;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  transition: color 200ms ease-in-out;
+}
+
+.switch-ff-btn:where(:hover, :focus-visible) .header-icon.chevron {
+  color: hsl(var(--primary));
+}
+
+.header-icon {
+  width: var(--header-icon-size);
+  height: var(--header-icon-size);
+  color: hsl(var(--text-secondary));
+
+  transition: color 200ms ease-in-out;
+}
+
+.header-icon.chevron {
+  --header-icon-size: 1.2rem;
+}
+
+/* Popup styles */
+.font-families {
+  background-color: hsl(var(--bg-secondary));
+  color: hsl(var(--text-primary));
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: -1px -2px 5px 0 hsla(var(--primary) / 0.5),
+    -1px 2px 5px 0 hsla(var(--primary) / 0.5),
+    1px 2px 5px 0 hsla(var(--primary) / 0.5),
+    1px -2px 5px 0 hsla(var(--primary) / 0.5);
+
+  /* display: grid; */
+  gap: 0.5rem;
+
+  position: absolute;
+  left: -1rem;
+  right: -1rem;
+  bottom: -7.25rem;
+  z-index: 100;
+
+  transition: 200ms ease-in-out;
+  transition-property: background-color, color;
+}
+
+.font-family {
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.font-family:where(:hover, :focus-within) {
+  color: hsl(var(--primary));
+}
+
+.divider {
+  align-self: stretch;
+
+  width: 1px;
+  background-color: hsl(var(--bg-highlight));
+
+  transition: background-color 200ms ease-in-out;
+}
+
+.theme-toggler-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.slider-track {
+  width: 40px;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+
+  position: relative;
+
+  transition: background-color 200ms ease-in-out;
+}
+
+.sliding-knob {
+  width: 10px;
+  height: 10px;
+  background-color: hsl(var(--dark-text-primary));
+  border-radius: 50%;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  transition: 200ms ease-in-out;
+  transition-property: background-color, transform;
+}
+
+.dark-theme-label {
+  cursor: pointer;
+}
+
+.dark-theme-label:where(:hover, :focus) .header-icon.moon {
+  color: hsl(var(--primary));
+}
+
+.dark-theme-input {
+  display: none;
+}

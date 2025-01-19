@@ -1,0 +1,70 @@
+.app-content {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: hsl(var(--bg-primary));
+  color: hsl(var(--text-primary));
+  font-family: var(--ff);
+  font-weight: var(--fw-normal);
+  padding-block: 1rem;
+
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+
+  transition: 200ms ease-in-out;
+  transition-property: background-color, color;
+}
+
+.wrapper {
+  width: calc(100% - 2rem);
+  margin-inline: auto;
+  margin-block: 1rem;
+}
+
+/* Responsiveness */
+/* Screen sizes >= 768px */
+@media screen and (width >= 48em) {
+  .app-content {
+    padding-block: 1.5rem;
+
+    gap: 2rem;
+  }
+
+  .wrapper {
+    max-width: 45rem;
+  }
+}
+
+/* Screen sizes >= 1024px */
+@media screen and (width >= 64em) {
+  .app-content {
+    padding-block: 2rem;
+  }
+
+  .wrapper {
+    max-width: 60rem;
+  }
+}
+
+/* Screen sizes >= 1440px */
+@media screen and (width >= 90em) {
+  .app-content {
+    padding-block: 3rem;
+  }
+
+  .wrapper {
+    max-width: 75rem;
+  }
+}
+
+/* SR-only element styles */
+.sr-only {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  position: absolute;
+  left: -99999px;
+  top: auto;
+}
