@@ -22,6 +22,27 @@
   margin-block: 1rem;
 }
 
+.loader {
+  width: 120px;
+  height: 120px;
+  border: 16px solid hsl(var(--text-secondary));
+  border-top: 16px solid hsl(var(--primary));
+  border-radius: 50%;
+  margin-top: 3rem;
+
+  animation: spin 1200ms linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Responsiveness */
 /* Screen sizes >= 768px */
 @media screen and (width >= 48em) {

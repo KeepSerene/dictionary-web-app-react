@@ -1,0 +1,50 @@
+.welcome-note {
+  --info-icon-size: 4rem;
+
+  color: hsl(var(--text-secondary));
+  text-align: center;
+  margin-top: 3rem;
+
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.welcome-msg {
+  font-size: var(--fs-xl);
+}
+
+.app-title {
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--text-primary))
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.welcome-desc {
+  font-size: var(--fs-lg);
+}
+
+.info-icon {
+  width: var(--info-icon-size);
+  height: var(--info-icon-size);
+}
+
+/* Responsiveness */
+/* Screen sizes >= 768px */
+@media screen and (width >= 48em) {
+  .welcome-msg {
+    font-size: var(--fs-2xl);
+  }
+
+  .welcome-desc {
+    font-size: var(--fs-xl);
+  }
+
+  .info-icon {
+    --info-icon-size: 5rem;
+  }
+}

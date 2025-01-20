@@ -18,7 +18,7 @@ export default function AppContextProvider({ children }) {
   const [isFFPopupOpen, setIsFFPopupOpen] = useState(false);
   const [word, setWord] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
   const [result, setResult] = useState(null);
 
   // =========== THEME ============
@@ -42,7 +42,7 @@ export default function AppContextProvider({ children }) {
     if (!word.trim()) return;
 
     setIsLoading(true);
-    setErrorMsg("");
+    setErrorMsg(null);
     setResult(null);
 
     try {
@@ -53,19 +53,28 @@ export default function AppContextProvider({ children }) {
       );
 
       if (!response.ok) {
-        throw new Error("No definitions found for the word!");
+        if (response.status === 404) {
+          const errorData = await response.json();
+          setErrorMsg(errorData);
+          return;
+        }
+
+        throw new Error(`Status: ${response.status}.`);
       }
 
       const data = await response.json();
-
-      console.log(data);
+      // console.log(data);
 
       // Set the most relevant result
       setResult(data[0]);
       setWord("");
     } catch (err) {
       console.error(err);
-      setErrorMsg(err.message);
+      setErrorMsg({
+        title: "Something Went Wrong!",
+        message: err.message,
+        resolution: "Check your internet connection or try again later!",
+      }); // Adhering to the API's error format
     } finally {
       setIsLoading(false);
     }
