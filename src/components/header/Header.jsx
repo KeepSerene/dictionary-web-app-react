@@ -45,6 +45,7 @@ function Header() {
           <button
             type="button"
             onClick={() => setIsFFPopupOpen(!isFFPopupOpen)}
+            aria-label="Choose your favourite font-family"
             className="switch-ff-btn"
           >
             <span>{activeFFName}</span>
@@ -124,8 +125,9 @@ function Header() {
           {/* Slider track */}
           <button
             type="button"
-            role="switch"
             onClick={() => setIsDarkTheme(!isDarkTheme)}
+            role="switch"
+            aria-checked={isDarkTheme}
             aria-label="Toggle theme"
             style={{
               backgroundColor: isDarkTheme
