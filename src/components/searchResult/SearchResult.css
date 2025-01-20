@@ -47,7 +47,7 @@
   height: var(--icon-size);
 }
 
-.icon:where(.play, .pause) {
+.icon:where(.play, .pause, .mute) {
   --icon-size: 2rem;
 }
 
