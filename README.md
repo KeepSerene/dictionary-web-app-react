@@ -27,8 +27,8 @@ PhraseFox is a feature-rich dictionary web application that offers a seamless wo
 
   - Dark/Light mode toggle
   - Three font family options:
-    - Sans-serif (Inter)
-    - Serif (Lora)
+    - Sans-serif (Lora)
+    - Serif (Inter)
     - Monospace (Inconsolata)
   - Local storage for user preferences
 
