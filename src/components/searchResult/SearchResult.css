@@ -105,7 +105,7 @@
 }
 
 .def-info-wrapper {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 
   display: flex;
   align-items: center;
@@ -142,6 +142,24 @@
 .info {
   color: hsl(var(--primary));
   font-size: var(--fs-base);
+}
+
+.word-btn {
+  background-color: transparent;
+  color: hsl(var(--primary));
+  border: none;
+
+  transition: color 200ms ease-in-out;
+}
+
+.word-btn:hover {
+  color: hsla(var(--primary) / 0.7);
+}
+
+.word-btn:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .source-wrapper {

@@ -3,9 +3,27 @@ import "./SearchResult.css";
 // React imports
 import { useRef, useState } from "react";
 
+// Context import
+import { useAppContext } from "../AppContextProvider";
+
+function ClickableWord({ word, onSearch }) {
+  return (
+    <button
+      type="button"
+      onClick={() => onSearch(word)}
+      aria-label={`Search ${word}`}
+      className="word-btn"
+    >
+      {word}
+    </button>
+  );
+}
+
 function SearchResult({ result }) {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const audioRef = useRef(null);
+
+  const { onSearch } = useAppContext();
 
   // Get the first available audio URL
   const audioURL =
@@ -123,7 +141,14 @@ function SearchResult({ result }) {
                   <div className="def-info-wrapper">
                     <h4 className="def-info-label">Synonyms</h4>
 
-                    <p className="def-info">{def.synonyms.join(", ")}</p>
+                    <p className="def-info">
+                      {def.synonyms.map((syn, synIndex) => (
+                        <span key={synIndex}>
+                          <ClickableWord word={syn} onSearch={onSearch} />
+                          {synIndex < def.synonyms.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                    </p>
                   </div>
                 )}
 
@@ -132,7 +157,14 @@ function SearchResult({ result }) {
                   <div className="def-info-wrapper">
                     <h4 className="def-info-label">Antonyms</h4>
 
-                    <p className="def-info">{def.antonyms.join(", ")}</p>
+                    <p className="def-info">
+                      {def.antonyms.map((ant, antIndex) => (
+                        <span key={antIndex}>
+                          <ClickableWord word={ant} onSearch={onSearch} />
+                          {antIndex < def.antonyms.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                    </p>
                   </div>
                 )}
               </li>
@@ -144,7 +176,14 @@ function SearchResult({ result }) {
             <div className="info-wrapper">
               <h3 className="info-label">Synonyms</h3>
 
-              <p className="info">{meaning.synonyms.join(", ")}</p>
+              <p className="info">
+                {meaning.synonyms.map((syn, synIndex) => (
+                  <span key={synIndex}>
+                    <ClickableWord word={syn} onSearch={onSearch} />
+                    {synIndex < meaning.synonyms.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+              </p>
             </div>
           )}
 
@@ -153,7 +192,14 @@ function SearchResult({ result }) {
             <div className="info-wrapper">
               <h3 className="info-label">Antonyms</h3>
 
-              <p className="info">{meaning.antonyms.join(", ")}</p>
+              <p className="info">
+                {meaning.antonyms.map((ant, antIndex) => (
+                  <span key={antIndex}>
+                    <ClickableWord word={ant} onSearch={onSearch} />
+                    {antIndex < meaning.antonyms.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+              </p>
             </div>
           )}
         </section>

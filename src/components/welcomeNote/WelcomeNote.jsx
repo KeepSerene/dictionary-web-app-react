@@ -4,7 +4,7 @@ function WelcomeNote() {
   return (
     <section className="welcome-note | wrapper">
       <h1 className="welcome-msg">
-        Welcome to <span className="app-title">VocabVault!</span>
+        Welcome to <span className="app-title">PhraseFox!</span>
       </h1>
 
       <p className="welcome-desc">Your search result will appear here.</p>

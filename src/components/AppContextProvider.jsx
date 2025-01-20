@@ -36,10 +36,17 @@ export default function AppContextProvider({ children }) {
   }, [fontFamily]);
 
   // =========== SEARCH MEANING =============
-  const onSearch = async (event) => {
-    event.preventDefault();
+  const onSearch = async (eventOrWord) => {
+    let searchTerm;
 
-    if (!word.trim()) return;
+    if (eventOrWord?.preventDefault) {
+      eventOrWord.preventDefault();
+      searchTerm = word.trim().toLowerCase();
+    } else {
+      searchTerm = eventOrWord.trim().toLowerCase();
+    }
+
+    if (!searchTerm) return;
 
     setIsLoading(true);
     setErrorMsg(null);
@@ -47,9 +54,7 @@ export default function AppContextProvider({ children }) {
 
     try {
       const response = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word
-          .trim()
-          .toLowerCase()}`
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${searchTerm}`
       );
 
       if (!response.ok) {
